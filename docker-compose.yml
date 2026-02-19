@@ -1,0 +1,51 @@
+version: '3.8'
+
+services:
+  web:
+    build: .
+    ports:
+      - "8080:80"
+    volumes:
+      - .:/var/www/html
+    environment:
+      - DB_HOST=db
+      - DB_NAME=minimal_cms
+      - DB_USER=cms_user
+      - DB_PASS=cms_password
+    depends_on:
+      - db
+    networks:
+      - cms-network
+
+  db:
+    image: mariadb:10.11
+    restart: always
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_DATABASE=minimal_cms
+      - MYSQL_USER=cms_user
+      - MYSQL_PASSWORD=cms_password
+    volumes:
+      - db_data:/var/lib/mysql
+    networks:
+      - cms-network
+
+  phpmyadmin:
+    image: phpmyadmin/phpmyadmin
+    restart: always
+    ports:
+      - "8081:80"
+    environment:
+      - PMA_HOST=db
+      - PMA_PORT=3306
+      - MYSQL_ROOT_PASSWORD=root_password
+      # Optional: Login as specific user if desired, but root is requested
+    networks:
+      - cms-network
+
+networks:
+  cms-network:
+    driver: bridge
+
+volumes:
+  db_data:

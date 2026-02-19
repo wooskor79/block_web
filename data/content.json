@@ -1,0 +1,40 @@
+[
+    {
+        "id": "block_1",
+        "type": "hero",
+        "content": {
+            "title": "Modern Tech & Minimal Life",
+            "subtitle": "Building the future with simplicity and elegance.",
+            "buttonText": "Get Started",
+            "buttonLink": "#"
+        }
+    },
+    {
+        "id": "block_2",
+        "type": "text",
+        "content": {
+            "heading": "Welcome to Our Platform",
+            "text": "This is a block-based CMS built with PHP and JSON. No database required."
+        }
+    },
+    {
+        "id": "block_3",
+        "type": "cards",
+        "content": {
+            "cards": [
+                {
+                    "title": "Performance",
+                    "text": "Optimized for speed and efficiency."
+                },
+                {
+                    "title": "Flexibility",
+                    "text": "Customizable blocks to fit your needs."
+                },
+                {
+                    "title": "Simplicity",
+                    "text": "Easy to manage and deploy."
+                }
+            ]
+        }
+    }
+]

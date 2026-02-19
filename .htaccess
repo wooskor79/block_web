@@ -1,0 +1,13 @@
+RewriteEngine On
+RewriteBase /
+
+# Protect internal files
+RewriteRule ^(data|templates|includes)/ - [F,L]
+RewriteRule ^(composer\.json|package\.json|README\.md)$ - [F,L]
+
+# Allow access to existing files/dirs
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# Route everything else to index.php
+RewriteRule ^([^/]+)/?$ index.php?page=$1 [L,QSA]
